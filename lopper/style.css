@@ -27,7 +27,6 @@ body, input, button {
 }
 
 body {
-
   -webkit-font-smoothing: antialiased !important;
 }
 
@@ -47,7 +46,8 @@ header {
   z-index: 10;
 
   width: 100%;
-  height: 10rem;
+
+  transition: all 0.3s;
 }
 
 header div.header-content {
@@ -62,6 +62,16 @@ header div.header-content {
   padding: 0 2rem;
 }
 
+header.max-header {
+  height: 10rem;
+  background-color: transparent;
+}
+
+header.min-header {
+  height: 6rem;
+  background-color: #5E239D;
+}
+
 strong.header-title {
   color: #FCFCFC;
   font-size: 2.4rem;
@@ -74,7 +84,6 @@ header nav ul {
 header nav ul li {
   display: block;
   position: relative;
-  opacity: 0.8;
 
   transition: all 0.3s;
 }
@@ -91,7 +100,14 @@ header nav ul li a {
   color: #FCFCFC;
   font-size: 1.5rem;
   font-weight: 800;
+
+  opacity: 0.6;
 }
+
+header nav ul li.selected a {
+  opacity: 1;
+}
+
 
 header nav ul li a::after {
   position: absolute;
@@ -129,6 +145,10 @@ header nav ul li a::before {
   transition: all 0.2s ease-in-out;
 }
 
+header nav ul li.selected a::before {
+  transform: scaleX(1);
+}
+
 header nav ul li a:hover::before {
   transform: scaleX(1);
 }
@@ -149,8 +169,13 @@ header div.contact span {
   margin-left: 1rem;
 }
 
+header .menu {
+  display: none;
+}
+
 section {
   min-height: 100vh;
+  padding-top: 6rem;
 }
 
 section > div.container {
@@ -338,6 +363,7 @@ section#intro .banner-container > img{
   
   
   height: 80%;
+  max-width: 90%;
   margin-right: 2rem;
 }
 
@@ -395,8 +421,8 @@ section#benefits {
 }
 
 section#benefits .container {
-  min-width: 100vh;
   height: 100%;
+  width: 100%;
 
   display: flex;
   align-items: center;
@@ -607,7 +633,7 @@ section#quote .container::before {
   
   content: '';
   width: 100vw;
-  height: 10rem;
+  height: 16rem;
   background: #150433;
 }
 
@@ -701,14 +727,282 @@ section#quote .container .content span small.company {
   opacity: 0.6;
 }
 
+@media (max-width: 1200px) {
+  section#quote .container .images-container img.main-avatar {
+    width: 30rem;
+  }
+
+  section#quote .container .content img {
+    top: -7rem;
+    width: 6rem;
+    height: 6rem;
+  }
+}
+
+@media (max-width: 1000px) {
+
+  section#home div div.info-container h1 {
+    font-size: 9rem;
+  }
+
+  section#home div a.more {
+    right: -10rem;
+  }
+
+  section#quote .container .images-container .float {
+    display: none;
+  }
+}
+
 @media (max-width: 900px) {
   html {
     font-size: 50%;
+  }
+
+  section#intro .container .banner-container {
+    flex-direction: column-reverse;
+  }
+
+  section#intro .container .banner-container img {
+    position: relative;
+    height: 50%;
+  }
+
+  section#intro .container .banner-container div.quote {
+    position: relative;
+  }
+
+  section#intro .container .banner-container div.purple-square {
+    display: none;
+  }
+
+  section#intro .container .banner-container div.quote {
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    padding: 1rem 0;
+    align-items: center;
+    border-radius: 10px;
+
+    position: relative;
+    top: 0;
+    right: 0;
+  }
+
+  section#intro .container .banner-container div.quote img {
+    width: 3rem;
+    margin: 0 1rem;
+  }
+
+  section#intro .container .banner-container div.quote p {
+    margin: 0;
+    text-align: center;
+  }
+}
+
+@media (max-width: 700px) {
+  section#home div.container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  section#home div.container div.info-container {
+    max-width: 100%;
+    padding-right: 2rem;
+  }
+
+  section#home div.container a.more {
+    position: relative;
+    top: 0;
+    left: 0;
+    padding-top: 2rem;
+
+    transform: rotate(0deg);
+  }
+
+  section#home div.container a.more button {
+    display: none;
+  }
+
+  section#intro div.container {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  section#intro::after {
+    display: none;
+  }
+
+  section#intro div.container .text-container {
+    min-height: auto;
+    flex: 0;
+  }
+
+  section#intro div.container .banner-container {
+    min-height: auto;
+    flex: 0;
+  }
+
+  section#intro .container .banner-container > img {
+    display: none;
+  }
+
+  section#intro .container .banner-container .quote {
+    max-width: 50rem;
+    align-self: center;
+    margin-bottom: 2rem;
+  }
+
+  section#intro .container .banner-container .quote img {
+    width: 2rem;
+    height: 2rem
+  }
+
+  section#benefits div.container {
+    background-color: #30124E;
+
+  }
+
+  section#benefits .background-purple, .background-white {
+    display: none;
+  }
+
+  section#benefits .container {
+    justify-content: center;
+  }
+
+  section#benefits .container div.text-container {
+    max-width: 60rem;
+  }
+
+  section#benefits div.container div.images-container {
+    display: none;
+
+  }
+
+  section#services .container p.strong {
+    max-width: 80%;
+  }
+
+  section#quote .container .content p.quote {
+    max-width: 100%;
+  }
+
+  header div.contact {
+    display: none;
+  }
+
+  header nav {
+    position: absolute;
+    top: 10rem;
+    left: 0;
+
+    width: 100%;
+    height: calc(100vh - 10rem);
+    background-color: #5E239D;
+
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+
+    transition: all 0.4s ease-in-out;
+    transform: translateX(-100%);
+  }
+
+  header.menu-open {
+    background-color: #5E239D;
+    height: 10rem;
+  }
+
+  header nav.menu-open {
+    transform: translateX(0);
+  }
+
+  body.menu-open {
+    overflow: hidden;
+  }
+
+  header ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  header nav ul li + li {
+    margin-top: 6rem;
+    margin-left: 0;
+  }
+
+  header nav ul li a {
+    font-size: 2rem;
+  }
+
+  header .menu {
+    display: block;
+    padding: 2rem;
+  }
+
+  .hamburger {
+    position: relative;
+    width: 2.8rem;
+    height: 0.3rem;
+    background-color: #fcfcfc;
+
+    transition: all 0.3s;
+  }
+
+  .menu .hamburger::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: -8px;
+    left: 0;
+
+    background-color: #fcfcfc;
+  }
+
+  .menu .hamburger::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 8px;
+    left: 0;
+
+    background-color: #fcfcfc;
+  }
+
+  .close-btn {
+    transform: rotateZ(45deg);
+  }
+
+  .menu .close-btn::before, .menu .close-btn::after {
+    top: 0;
+    transform: rotateZ(90deg);
   }
 }
 
 @media (max-width: 400px) {
   html {
     font-size: 40%;
+  }
+
+  section#services .container p.strong {
+    max-width: 100%;
+  }
+
+}
+
+@media (max-width: 300px) {
+  section#home div div.info-container h1 {
+    font-size: 6rem;
+  }
+
+  button.learn-more {
+    width: 100%;
   }
 }
